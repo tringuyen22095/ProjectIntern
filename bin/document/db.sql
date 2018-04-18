@@ -56,7 +56,7 @@ CREATE TABLE PUBLIC."expend_type"
 	"note"				VARCHAR(100),
 	"type"				VARCHAR(20),
 	"id_parent"		VARCHAR(10),
-	"owner"				VARCHAR(40),
+	"owner"				VARCHAR(10),
 	"status"			VARCHAR(10)		DEFAULT 'active'
 );
 
@@ -151,6 +151,6 @@ CREATE TABLE PUBLIC."log"
 	"date_log"		TIMESTAMP			PRIMARY KEY		DEFAULT CURRENT_TIMESTAMP,
 	"who"					VARCHAR(40),
 	"act"					VARCHAR(10),
-	"old_data"		TEXT,
-	"new_data"		TEXT
+	"data_old"		TEXT,
+	"date_new"		TEXT
 );
