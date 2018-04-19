@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan("com.intern")
+@ComponentScan(basePackages = "com.intern")
 public class ProjectInternApplication {
 
 	public static void main(String[] args) {
