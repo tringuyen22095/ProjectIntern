@@ -1,15 +1,15 @@
 package com.intern.service;
 
-import com.intern.model.*;
+import com.intern.model.UserAccount;
 
 public interface UserAccountService {
-	public UserAccount findUserAccountByUserName(String userName);
+	UserAccount findUserAccountByUserName(String userName);
 
-	public UserAccount findUserAccountByEmail(String email);
+	UserAccount findUserAccountByEmail(String email);
 
-	public String save(UserAccount newUserAccount);
+	String save(UserAccount newUserAccount);
 
-	public UserAccount update(UserAccount newUserAccount);
+	UserAccount update(UserAccount newUserAccount);
 
-	public UserAccount delete(String userName);
+	UserAccount delete(String userName);
 }

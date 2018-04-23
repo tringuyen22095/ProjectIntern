@@ -10,18 +10,25 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "account", schema = "public")
 public class Account implements Serializable {
+
+	// region -- Fields --
+
 	@EmbeddedId
 	private AccountIdentity accountIdentity;
 	@Column(name = "name", insertable = false, updatable = false, nullable = false)
 	private String name;
-	@Column(name = "price_in", insertable = false, updatable = false, nullable = false)
-	private double priceIn;
-	@Column(name = "price_out", insertable = false, updatable = false, nullable = false)
-	private double priceOut;
+	@Column(name = "ini", insertable = false, updatable = false, nullable = false)
+	private double ini;
+	@Column(name = "rmn", insertable = false, updatable = false, nullable = false)
+	private double rmn;
 	@Column(name = "note", insertable = false, updatable = false, nullable = false)
 	private String note;
 	@Column(name = "status", insertable = false, updatable = false, nullable = false)
 	private String status;
+
+	// end
+
+	// region -- Get set --
 
 	public AccountIdentity getAccountIdentity() {
 		return accountIdentity;
@@ -39,20 +46,20 @@ public class Account implements Serializable {
 		this.name = name;
 	}
 
-	public double getPriceIn() {
-		return priceIn;
+	public double getIni() {
+		return ini;
 	}
 
-	public void setPriceIn(double priceIn) {
-		this.priceIn = priceIn;
+	public void setIni(double ini) {
+		this.ini = ini;
 	}
 
-	public double getPriceOut() {
-		return priceOut;
+	public double getRmn() {
+		return rmn;
 	}
 
-	public void setPriceOut(double priceOut) {
-		this.priceOut = priceOut;
+	public void setRmn(double rmn) {
+		this.rmn = rmn;
 	}
 
 	public String getNote() {
@@ -67,30 +74,34 @@ public class Account implements Serializable {
 		return status;
 	}
 
+	// end
+
+	// region -- Methods --
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
 
-	public Account(AccountIdentity accountIdentity, String name, double priceIn, double priceOut, String note,
-			String status) {
+	public Account(AccountIdentity accountIdentity, String name, double ini, double rmn, String note, String status) {
 		this.accountIdentity = accountIdentity;
 		this.name = name;
-		this.priceIn = priceIn;
-		this.priceOut = priceOut;
+		this.ini = ini;
+		this.rmn = rmn;
 		this.note = note;
 		this.status = status;
 	}
 
-	public Account(String owner, String typeId, String name, double priceIn, double priceOut, String note,
-			String status) {
+	public Account(String owner, String typeId, String name, double ini, double rmn, String note, String status) {
 		this.accountIdentity = new AccountIdentity(owner, typeId);
 		this.name = name;
-		this.priceIn = priceIn;
-		this.priceOut = priceOut;
+		this.ini = ini;
+		this.rmn = rmn;
 		this.note = note;
 		this.status = status;
 	}
 
 	public Account() {
 	}
+
+	// end
 }

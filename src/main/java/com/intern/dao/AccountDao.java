@@ -7,7 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.intern.model.*;
+import com.intern.model.Account;
+import com.intern.model.AccountIdentity;
 
 @Repository
 public interface AccountDao extends JpaRepository<Account, AccountIdentity> {

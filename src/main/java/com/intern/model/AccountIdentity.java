@@ -1,15 +1,23 @@
 package com.intern.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import java.io.Serializable;
 
 @Embeddable
 public class AccountIdentity implements Serializable {
+
+	// region -- Fields --
+
 	@Column(name = "owner", insertable = false, updatable = false, nullable = false)
 	private String owner;
 	@Column(name = "type_id", insertable = false, updatable = false, nullable = false)
 	private String typeId;
+
+	// end
+
+	// region -- Get set --
 
 	public String getOwner() {
 		return owner;
@@ -27,6 +35,10 @@ public class AccountIdentity implements Serializable {
 		this.typeId = typeId;
 	}
 
+	// end
+
+	// region -- Methods --
+
 	public AccountIdentity(String owner, String typeId) {
 		super();
 		this.owner = owner;
@@ -37,4 +49,5 @@ public class AccountIdentity implements Serializable {
 		super();
 	}
 
+	// end
 }

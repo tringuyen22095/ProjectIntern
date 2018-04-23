@@ -1,6 +1,7 @@
 package com.intern.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,23 +9,40 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "expend_type", schema = "public")
-public class ExpendType implements Serializable {
+@Table(name = "transaction_type", schema = "public")
+public class TransactionType implements Serializable {
+
+	// region -- Fields --
+
 	@Id
-	@Column(name = "id", insertable = false, updatable = false, nullable = false)
+	@Column(name = "id", updatable = false, nullable = false)
 	private String id;
-	@Column(name = "name", insertable = false, updatable = false, nullable = false)
+	@Column(name = "name", nullable = true)
 	private String name;
-	@Column(name = "note", insertable = false, updatable = false, nullable = false)
+	@Column(name = "note", nullable = true)
 	private String note;
-	@Column(name = "type", insertable = false, updatable = false, nullable = false)
+	@Column(name = "type", nullable = true)
 	private String type;
-	@Column(name = "id_parent", insertable = false, updatable = false, nullable = false)
+	@Column(name = "id_parent", nullable = true)
 	private String idParent;
-	@Column(name = "owner", insertable = false, updatable = false, nullable = false)
+	@Column(name = "owner", nullable = true)
 	private String owner;
-	@Column(name = "status", insertable = false, updatable = false, nullable = false)
+	@Column(name = "create_date", insertable = false, nullable = true)
+	private Date createDate;
+	@Column(name = "status", insertable = false, nullable = true)
 	private String status;
+
+	// end
+
+	// region -- Get set --
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
 
 	public String getId() {
 		return id;
@@ -82,7 +100,12 @@ public class ExpendType implements Serializable {
 		this.status = status;
 	}
 
-	public ExpendType(String id, String name, String note, String type, String idParent, String owner, String status) {
+	// end
+
+	// region -- Methods --
+
+	public TransactionType(String id, String name, String note, String type, String idParent, String owner,
+			String status) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -93,8 +116,9 @@ public class ExpendType implements Serializable {
 		this.status = status;
 	}
 
-	public ExpendType() {
+	public TransactionType() {
 		super();
 	}
 
+	// end
 }

@@ -1,8 +1,5 @@
 package com.intern.service.impl;
 
-import com.intern.model.*;
-import com.intern.service.*;
-
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -12,16 +9,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.intern.dao.*;
+import com.intern.dao.AccountDao;
+import com.intern.model.Account;
+import com.intern.service.AccountService;
 
 @Service
 @Transactional
 public class AccountServiceImpl implements AccountService {
 
+	// region -- Fields --
+
 	@Autowired
 	private AccountDao dao;
 	@PersistenceContext
 	private EntityManager entityManager;
+
+	// end
+
+	// region -- Methods --
 
 	@Override
 	public Account findAccountByOwner(String owner) {
@@ -62,4 +67,5 @@ public class AccountServiceImpl implements AccountService {
 		return null;
 	}
 
+	// end
 }

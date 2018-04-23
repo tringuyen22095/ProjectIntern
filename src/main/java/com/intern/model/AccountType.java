@@ -9,7 +9,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "account", schema = "public")
-public class AccountType implements Serializable{
+public class AccountType implements Serializable {
+
+	// region -- Fields --
+
 	@Id
 	@Column(name = "id", insertable = false, updatable = false, nullable = false)
 	private String id;
@@ -19,6 +22,10 @@ public class AccountType implements Serializable{
 	private String note;
 	@Column(name = "status", insertable = false, updatable = false, nullable = false)
 	private String status;
+
+	// end
+
+	// region -- Get set --
 
 	public String getId() {
 		return id;
@@ -52,6 +59,10 @@ public class AccountType implements Serializable{
 		this.status = status;
 	}
 
+	// end
+
+	// region -- Methods --
+
 	public AccountType(String id, String name, String note, String status) {
 		super();
 		this.id = id;
@@ -64,4 +75,5 @@ public class AccountType implements Serializable{
 		super();
 	}
 
+	// end
 }

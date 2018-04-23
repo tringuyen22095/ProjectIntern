@@ -3,26 +3,23 @@ package com.intern.req;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UserAccountReq {
-	@JsonProperty("userName")
+
+	// region -- Fields --
+
+	@JsonProperty("user_name")
 	private String userName;
 	@JsonProperty("password")
 	private String password;
-	@JsonProperty("fullName")
-	private String full_name;
+	@JsonProperty("full_name")
+	private String fullName;
 	@JsonProperty("email")
 	private String email;
 	@JsonProperty("telephone")
 	private String telephone;
-	@JsonProperty("status")
-	private String status;
 
-	public String getStatus() {
-		return status;
-	}
+	// end
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+	// region -- Get set --
 
 	public String getUserName() {
 		return userName;
@@ -40,12 +37,12 @@ public class UserAccountReq {
 		this.password = password;
 	}
 
-	public String getFull_name() {
-		return full_name;
+	public String getFullName() {
+		return fullName;
 	}
 
-	public void setFull_name(String full_name) {
-		this.full_name = full_name;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 	public String getEmail() {
@@ -64,4 +61,13 @@ public class UserAccountReq {
 		this.telephone = telephone;
 	}
 
+	// end
+
+	// region -- Methods --
+
+	public UserAccountReq() {
+		super();
+	}
+
+	// end
 }

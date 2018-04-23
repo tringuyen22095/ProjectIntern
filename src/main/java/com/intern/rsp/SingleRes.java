@@ -1,7 +1,14 @@
-package com.intern.res;
+package com.intern.rsp;
 
 public class SingleRes extends BaseRes {
+
+	// region -- Fields --
+
 	private Object result;
+
+	// end
+
+	// region -- Get set --
 
 	public Object getResult() {
 		return result;
@@ -16,8 +23,13 @@ public class SingleRes extends BaseRes {
 		this.result = result;
 	}
 
+	// end
+
+	// region -- Methods --
+
 	public SingleRes() {
 		super();
 	}
 
+	// end
 }

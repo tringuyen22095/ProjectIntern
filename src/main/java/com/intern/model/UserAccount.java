@@ -6,11 +6,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "user_account", schema = "public")
 public class UserAccount implements Serializable {
+
+	// region -- Fields --
+
 	@Id
 	@Column(name = "user_name", updatable = false, nullable = false)
 	private String userName;
@@ -22,8 +24,12 @@ public class UserAccount implements Serializable {
 	private String email;
 	@Column(name = "telephone", nullable = true)
 	private String telephone;
-	@Column(name = "status", nullable = false)
+	@Column(name = "status", insertable = false, nullable = true)
 	private String status;
+
+	// end
+
+	// region -- Get set --
 
 	public String getUserName() {
 		return userName;
@@ -73,6 +79,10 @@ public class UserAccount implements Serializable {
 		this.status = status;
 	}
 
+	// end
+
+	// region -- Methods --
+
 	public UserAccount(String userName, String password, String fullName, String email, String telephone,
 			String status) {
 		super();
@@ -88,4 +98,5 @@ public class UserAccount implements Serializable {
 		super();
 	}
 
+	// end
 }

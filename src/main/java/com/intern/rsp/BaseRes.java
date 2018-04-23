@@ -1,9 +1,16 @@
-package com.intern.res;
+package com.intern.rsp;
 
 public class BaseRes {
+
+	// region -- Fields --
+
 	private String callStatus;
 	private String message;
-	
+
+	// end
+
+	// region -- Get set --
+
 	public String getMessage() {
 		return message;
 	}
@@ -20,8 +27,14 @@ public class BaseRes {
 		this.callStatus = callStatus;
 	}
 
+	// end
+
+	// region -- Methods --
+
 	public BaseRes() {
 		this.callStatus = "Success";
 		this.message = "";
 	}
+
+	// end
 }

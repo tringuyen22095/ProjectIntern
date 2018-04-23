@@ -1,16 +1,17 @@
 package com.intern.service;
 
 import java.util.List;
+
 import com.intern.model.Account;
 
 public interface AccountService {
-	public Account findAccountByOwner(String owner);
+	Account findAccountByOwner(String owner);
 
-	public List<Account> findAccountLikeName(String name);
-	
-	public Account save(Account newAccount);
-	
-	public Account update(Account newAccount);
+	List<Account> findAccountLikeName(String name);
 
-	public Account delete(String owner);
+	Account save(Account newAccount);
+
+	Account update(Account newAccount);
+
+	Account delete(String owner);
 }

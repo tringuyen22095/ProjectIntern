@@ -1,7 +1,5 @@
 package com.intern.service.impl;
 
-import com.intern.model.*;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -9,18 +7,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.intern.dao.*;
-import com.intern.service.*;
+import com.intern.dao.UserAccountDao;
+import com.intern.model.UserAccount;
+import com.intern.service.UserAccountService;
 
 @Service
 @Transactional
 public class UserAccountServiceImpl implements UserAccountService {
 
+	// region -- Fields --
+	
 	@Autowired
 	private UserAccountDao dao;
 	@PersistenceContext
 	private EntityManager entityManager;
 
+	// end
+	
+	// region -- Methods --
+	
 	@Override
 	public UserAccount findUserAccountByUserName(String userName) {
 		return dao.getUserAccountByUserName(userName);
@@ -64,4 +69,5 @@ public class UserAccountServiceImpl implements UserAccountService {
 		return null;
 	}
 
+	// end
 }
