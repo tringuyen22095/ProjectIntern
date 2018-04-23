@@ -15,8 +15,6 @@ public class TransactionIdentity implements Serializable {
 	private Date dateTransaction;
 	@Column(name = "owner", updatable = false, nullable = false)
 	private String owner;
-	@Column(name = "account_type", updatable = false, nullable = false)
-	private String accountType;
 
 	// end
 
@@ -38,23 +36,14 @@ public class TransactionIdentity implements Serializable {
 		this.owner = owner;
 	}
 
-	public String getAccountType() {
-		return accountType;
-	}
-
-	public void setAccountType(String accountType) {
-		this.accountType = accountType;
-	}
-
 	// end
 
 	// region -- Methods --
 
-	public TransactionIdentity(Date dateTransaction, String owner, String accountType) {
+	public TransactionIdentity(Date dateTransaction, String owner) {
 		super();
 		this.dateTransaction = dateTransaction;
 		this.owner = owner;
-		this.accountType = accountType;
 	}
 
 	public TransactionIdentity() {

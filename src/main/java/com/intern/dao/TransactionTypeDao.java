@@ -11,11 +11,14 @@ import com.intern.model.TransactionType;
 
 @Repository
 public interface TransactionTypeDao extends JpaRepository<TransactionType, String> {
-	
+
 	/**
 	 * Use for search like name and another transaction type which user had created.
-	 * @param owner get transaction which belong to this owner
-	 * @param name search like name (upper or lower is same)
+	 * 
+	 * @param owner
+	 *            get transaction which belong to this owner
+	 * @param name
+	 *            search like name (upper or lower is same)
 	 * @return
 	 */
 	@Query(nativeQuery = true, value = "SELECT * FROM transaction_type a WHERE a.status = 'active' AND UPPER(a.name)"
@@ -25,7 +28,9 @@ public interface TransactionTypeDao extends JpaRepository<TransactionType, Strin
 
 	/**
 	 * Use for get exact transaction type in db
-	 * @param id get with primary key
+	 * 
+	 * @param id
+	 *            get with primary key
 	 * @return
 	 */
 	@Query(nativeQuery = true, value = "SELECT * FROM transaction_type a WHERE a.id = :id")

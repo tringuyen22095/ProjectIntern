@@ -87,6 +87,6 @@ public class TransactionTypeReq {
 	public TransactionTypeReq() {
 		super();
 	}
-	
+
 	// end
 }

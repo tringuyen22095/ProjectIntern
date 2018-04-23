@@ -16,6 +16,8 @@ public class Transaction implements Serializable {
 
 	@EmbeddedId
 	private TransactionIdentity transactionIdentity;
+	@Column(name = "account_type", updatable = false, nullable = false)
+	private String accountType;
 	@Column(name = "transaction_type", nullable = true)
 	private String transactionType;
 	@Column(name = "type", nullable = true)
@@ -39,6 +41,14 @@ public class Transaction implements Serializable {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getAccountType() {
+		return accountType;
+	}
+
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
 	}
 
 	public TransactionIdentity getTransactionIdentity() {
@@ -93,10 +103,11 @@ public class Transaction implements Serializable {
 
 	// region -- Methods --
 
-	public Transaction(TransactionIdentity transactionIdentity, String transactionType, String type, double price,
-			String note, String person) {
+	public Transaction(TransactionIdentity transactionIdentity, String accountType, String transactionType, String type,
+			double price, String note, String person) {
 		super();
 		this.transactionIdentity = transactionIdentity;
+		this.accountType = accountType;
 		this.transactionType = transactionType;
 		this.type = type;
 		this.price = price;
@@ -107,7 +118,8 @@ public class Transaction implements Serializable {
 	public Transaction(Date date_expend, String owner, String accountType, String transactionType, String type,
 			double price, String note, String person) {
 		super();
-		this.transactionIdentity = new TransactionIdentity(date_expend, owner, accountType);
+		this.transactionIdentity = new TransactionIdentity(date_expend, owner);
+		this.accountType = accountType;
 		this.transactionType = transactionType;
 		this.type = type;
 		this.price = price;

@@ -18,10 +18,6 @@ public class AccountType implements Serializable {
 	private String id;
 	@Column(name = "name", insertable = false, updatable = false, nullable = false)
 	private String name;
-	@Column(name = "note", insertable = false, updatable = false, nullable = false)
-	private String note;
-	@Column(name = "status", insertable = false, updatable = false, nullable = false)
-	private String status;
 
 	// end
 
@@ -43,32 +39,14 @@ public class AccountType implements Serializable {
 		this.name = name;
 	}
 
-	public String getNote() {
-		return note;
-	}
-
-	public void setNote(String note) {
-		this.note = note;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
 	// end
 
 	// region -- Methods --
 
-	public AccountType(String id, String name, String note, String status) {
+	public AccountType(String id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.note = note;
-		this.status = status;
 	}
 
 	public AccountType() {

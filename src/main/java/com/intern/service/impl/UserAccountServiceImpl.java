@@ -16,16 +16,16 @@ import com.intern.service.UserAccountService;
 public class UserAccountServiceImpl implements UserAccountService {
 
 	// region -- Fields --
-	
+
 	@Autowired
 	private UserAccountDao dao;
 	@PersistenceContext
 	private EntityManager entityManager;
 
 	// end
-	
+
 	// region -- Methods --
-	
+
 	@Override
 	public UserAccount findUserAccountByUserName(String userName) {
 		return dao.getUserAccountByUserName(userName);

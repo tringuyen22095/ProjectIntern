@@ -11,7 +11,10 @@ import com.intern.model.AccountType;
 
 @Repository
 public interface AccountTypeDao extends JpaRepository<AccountType, String> {
-	@Query(nativeQuery = true, value = "SELECT * FROM expend_type a WHERE a.name LIKE CONCAT('%', :name, '%')"
-			+ " AND a.status = 'active'")
+	@Query(nativeQuery = true, value = "SELECT * FROM account_type a WHERE"
+			+ " UPPER(a.name) LIKE UPPER(CONCAT('%', :name, '%'))")
 	public List<AccountType> getAccountTypeLikeName(@Param("name") String name);
+
+	@Query(nativeQuery = true, value = "SELECT * FROM account_type WHERE a.id = UPPER(:id)")
+	public AccountType getAccountTypeById(@Param("id") String id);
 }

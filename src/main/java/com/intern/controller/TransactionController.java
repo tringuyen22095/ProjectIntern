@@ -69,7 +69,8 @@ public class TransactionController {
 			newTransaction.setPrice(price);
 			newTransaction.setTransactionType(transactionType);
 			newTransaction.setType(type);
-			TransactionIdentity transactionIdentity = new TransactionIdentity(new Date(), owner, accountType);
+			newTransaction.setAccountType(accountType);
+			TransactionIdentity transactionIdentity = new TransactionIdentity(new Date(), owner);
 			newTransaction.setTransactionIdentity(transactionIdentity);
 			ser.save(newTransaction);
 		} catch (Exception e) {
@@ -123,8 +124,8 @@ public class TransactionController {
 			temp.setPrice(price);
 			temp.setTransactionType(transactionType);
 			temp.setType(type);
+			temp.setAccountType(accountType);
 			TransactionIdentity transactionIdentity = new TransactionIdentity();
-			transactionIdentity.setAccountType(accountType);
 			transactionIdentity.setOwner(owner);
 			transactionIdentity.setDateTransaction(dateTransaction);
 			temp.setTransactionIdentity(transactionIdentity);
@@ -149,9 +150,7 @@ public class TransactionController {
 		try {
 			Date dateTransaction = req.getDateTransaction();
 			String owner = req.getOwner();
-			String accountType = req.getAccountType();
 			TransactionIdentity transactionIdentity = new TransactionIdentity();
-			transactionIdentity.setAccountType(accountType);
 			transactionIdentity.setDateTransaction(dateTransaction);
 			transactionIdentity.setOwner(owner);
 			Transaction temp = ser.delete(transactionIdentity);

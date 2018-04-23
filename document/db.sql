@@ -54,7 +54,7 @@ CREATE TABLE PUBLIC."transaction"
 	"note"				VARCHAR(100),
 	"person"			VARCHAR(100),
 	"status"			VARCHAR(10)		DEFAULT 'active',
-	PRIMARY KEY ("date_transaction", "owner", "account_type")
+	PRIMARY KEY ("date_transaction", "owner")
 );
 
 DROP TABLE IF EXISTS PUBLIC."log";
