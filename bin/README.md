@@ -1,1 +1,0 @@
-https://www.callicoder.com/hibernate-spring-boot-jpa-composite-primary-key-example/
