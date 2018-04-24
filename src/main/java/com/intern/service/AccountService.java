@@ -5,13 +5,12 @@ import java.util.List;
 import com.intern.model.Account;
 
 public interface AccountService {
-	Account findAccountByOwner(String owner);
 
-	List<Account> findAccountLikeName(String name);
+	List<Account> findAccountLikeName(String name, String owner);
 
 	Account save(Account newAccount);
 
 	Account update(Account newAccount);
 
-	Account delete(String owner);
+	Account delete(int id);
 }

@@ -7,5 +7,5 @@ import com.intern.model.AccountType;
 public interface AccountTypeService {
 	List<AccountType> findAccountTypeLikeName(String name);
 
-	AccountType findAccountTypeById(String id);
+	AccountType findAccountTypeById(int id);
 }

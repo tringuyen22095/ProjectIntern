@@ -29,26 +29,19 @@ public class AccountServiceImpl implements AccountService {
 	// region -- Methods --
 
 	@Override
-	public Account findAccountByOwner(String owner) {
-		return dao.getAccountByOwner(owner);
-	}
-
-	@Override
-	public List<Account> findAccountLikeName(String name) {
-		return dao.getAccountLikeName(name);
+	public List<Account> findAccountLikeName(String name, String owner) {
+		return dao.getAccountLikeName(name, owner);
 	}
 
 	@Override
 	public Account save(Account newAccount) {
-		if (findAccountByOwner(newAccount.getAccountIdentity().getOwner()) == null) {
-			return dao.save(newAccount);
-		}
+		dao.save(newAccount);
 		return null;
 	}
 
 	@Override
 	public Account update(Account newAccount) {
-		Account account = findAccountByOwner(newAccount.getAccountIdentity().getOwner());
+		Account account = dao.getAccountById(newAccount.getAccountIdentity().getId());
 		if (account != null) {
 			account = entityManager.merge(newAccount);
 			return account;
@@ -57,8 +50,8 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public Account delete(String owner) {
-		Account account = findAccountByOwner(owner);
+	public Account delete(int id) {
+		Account account = dao.getAccountById(id);
 		if (account != null) {
 			account.setStatus("deactive");
 			account = entityManager.merge(account);

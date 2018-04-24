@@ -7,15 +7,13 @@ public class TransactionTypeReq {
 	// region -- Fields --
 
 	@JsonProperty("id")
-	private String id;
+	private int id;
 	@JsonProperty("name")
 	private String name;
 	@JsonProperty("note")
 	private String note;
-	@JsonProperty("type")
-	private String type;
 	@JsonProperty("id_parent")
-	private String idParent;
+	private int idParent;
 	@JsonProperty("owner")
 	private String owner;
 
@@ -31,11 +29,11 @@ public class TransactionTypeReq {
 		this.name = name;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -47,19 +45,11 @@ public class TransactionTypeReq {
 		this.note = note;
 	}
 
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getIdParent() {
+	public int getIdParent() {
 		return idParent;
 	}
 
-	public void setIdParent(String idParent) {
+	public void setIdParent(int idParent) {
 		this.idParent = idParent;
 	}
 
@@ -75,11 +65,10 @@ public class TransactionTypeReq {
 
 	// region -- Methods --
 
-	public TransactionTypeReq(String id, String note, String type, String idParent, String owner) {
+	public TransactionTypeReq(int id, String note, int idParent, String owner) {
 		super();
 		this.id = id;
 		this.note = note;
-		this.type = type;
 		this.idParent = idParent;
 		this.owner = owner;
 	}

@@ -4,16 +4,19 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 @Embeddable
 public class AccountIdentity implements Serializable {
 
 	// region -- Fields --
 
-	@Column(name = "owner", insertable = false, updatable = false, nullable = false)
+	@Column(name = "id", insertable = false, updatable = false, nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	@Column(name = "owner", updatable = false, nullable = false)
 	private String owner;
-	@Column(name = "type_id", insertable = false, updatable = false, nullable = false)
-	private String typeId;
 
 	// end
 
@@ -27,22 +30,22 @@ public class AccountIdentity implements Serializable {
 		this.owner = owner;
 	}
 
-	public String getTypeId() {
-		return typeId;
+	public int getId() {
+		return id;
 	}
 
-	public void setTypeId(String typeId) {
-		this.typeId = typeId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	// end
 
 	// region -- Methods --
 
-	public AccountIdentity(String owner, String typeId) {
+	public AccountIdentity(String owner, int id) {
 		super();
 		this.owner = owner;
-		this.typeId = typeId;
+		this.id = id;
 	}
 
 	public AccountIdentity() {

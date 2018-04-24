@@ -29,7 +29,7 @@ public class AccountTypeServiceImpl implements AccountTypeService {
 	}
 
 	@Override
-	public AccountType findAccountTypeById(String id) {
+	public AccountType findAccountTypeById(int id) {
 		return dao.getAccountTypeById(id);
 	}
 

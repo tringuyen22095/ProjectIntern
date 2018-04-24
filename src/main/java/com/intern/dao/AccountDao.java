@@ -12,10 +12,11 @@ import com.intern.model.AccountIdentity;
 
 @Repository
 public interface AccountDao extends JpaRepository<Account, AccountIdentity> {
-	@Query(nativeQuery = true, value = "SELECT * FROM account a WHERE a.owner = :owner AND a.status = 'active'")
-	public Account getAccountByOwner(@Param("owner") String owner);
 
-	@Query(nativeQuery = true, value = "SELECT * FROM account a WHERE a.name LIKE CONCAT('%',:name,'%')"
-			+ " AND a.status = 'active'")
-	public List<Account> getAccountLikeName(@Param("name") String name);
+	@Query(nativeQuery = true, value = "SELECT * FROM account a WHERE a.id = :id")
+	public Account getAccountById(@Param("id") int id);
+
+	@Query(nativeQuery = true, value = "SELECT * FROM account a WHERE a.name LIKE UPPER(CONCAT('%',:name,'%'))"
+			+ " AND a.status = 'active' AND a.owner = :owner")
+	public List<Account> getAccountLikeName(@Param("name") String name, @Param("owner") String owner);
 }

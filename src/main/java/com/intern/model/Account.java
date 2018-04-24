@@ -15,6 +15,8 @@ public class Account implements Serializable {
 
 	@EmbeddedId
 	private AccountIdentity accountIdentity;
+	@Column(name = "account_type", insertable = false, updatable = false, nullable = false)
+	private String accountType;
 	@Column(name = "name", insertable = false, updatable = false, nullable = false)
 	private String name;
 	@Column(name = "ini", insertable = false, updatable = false, nullable = false)
@@ -74,6 +76,14 @@ public class Account implements Serializable {
 		return status;
 	}
 
+	public String getAccountType() {
+		return accountType;
+	}
+
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
+	}
+
 	// end
 
 	// region -- Methods --
@@ -82,18 +92,22 @@ public class Account implements Serializable {
 		this.status = status;
 	}
 
-	public Account(AccountIdentity accountIdentity, String name, double ini, double rmn, String note, String status) {
+	public Account(AccountIdentity accountIdentity, String name, double ini, double rmn, String note, String status,
+			String accountType) {
 		this.accountIdentity = accountIdentity;
 		this.name = name;
+		this.accountType = accountType;
 		this.ini = ini;
 		this.rmn = rmn;
 		this.note = note;
 		this.status = status;
 	}
 
-	public Account(String owner, String typeId, String name, double ini, double rmn, String note, String status) {
-		this.accountIdentity = new AccountIdentity(owner, typeId);
+	public Account(String owner, int id, String name, double ini, double rmn, String note, String status,
+			String account_type) {
+		this.accountIdentity = new AccountIdentity(owner, id);
 		this.name = name;
+		this.accountType = accountType;
 		this.ini = ini;
 		this.rmn = rmn;
 		this.note = note;

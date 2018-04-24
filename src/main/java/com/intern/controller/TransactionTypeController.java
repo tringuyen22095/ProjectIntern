@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.intern.model.TransactionType;
+import com.intern.model.TransactionExpense;
+import com.intern.model.TransactionIncome;
 import com.intern.req.TransactionTypeReq;
 import com.intern.rsp.SingleRes;
-import com.intern.service.TransactionTypeService;
+import com.intern.service.TransactionExpenseService;
+import com.intern.service.TransactionIncomeService;
 
 @RestController
 @RequestMapping("/transaction_type")
@@ -25,38 +27,38 @@ public class TransactionTypeController {
 	// region -- Fields --
 
 	@Autowired
-	private TransactionTypeService ser;
+	private TransactionExpenseService serExpense;
+	@Autowired
+	private TransactionIncomeService serIncome;
 
 	// end
 
 	// region -- Methods --
 
-	@PostMapping("/create")
-	public ResponseEntity<?> createTransactionType(@RequestBody TransactionTypeReq req) {
+	@PostMapping("/expense/create")
+	public ResponseEntity<?> createTransactionExpense(@RequestBody TransactionTypeReq req) {
 		SingleRes rsp = new SingleRes();
 
-		String idParent = req.getIdParent();
+		int idParent = req.getIdParent();
 		String name = req.getName();
 		String note = req.getNote();
 		String owner = req.getOwner();
-		String type = req.getType();
-		TransactionType transactionType = new TransactionType();
-		transactionType.setIdParent(idParent);
-		transactionType.setName(name);
-		transactionType.setNote(note);
-		transactionType.setOwner(owner);
-		transactionType.setType(type);
+		TransactionExpense transactionExpense = new TransactionExpense();
+		transactionExpense.setIdParent(idParent);
+		transactionExpense.setName(name);
+		transactionExpense.setNote(note);
+		transactionExpense.setOwner(owner);
 
-		ser.save(transactionType);
+		serExpense.save(transactionExpense);
 
 		return new ResponseEntity<>(rsp, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteTransactionType(@PathVariable("id") String id) {
+	@DeleteMapping("/expense/{id}")
+	public ResponseEntity<?> deleteTransactionExpense(@PathVariable("id") int id) {
 		SingleRes rsp = new SingleRes();
 
-		TransactionType result = ser.delete(id);
+		TransactionExpense result = serExpense.delete(id);
 		if (result != null) {
 			rsp.setCallStatus("Fail");
 			rsp.setMessage("Transaction Type doesn't exists.");
@@ -65,13 +67,21 @@ public class TransactionTypeController {
 		return new ResponseEntity<>(rsp, HttpStatus.OK);
 	}
 
-	@PutMapping("/{id}")
-	public ResponseEntity<?> updateTransactionType(@PathVariable("id") String id,
-			@RequestBody TransactionType newTransactionType) {
+	@PutMapping("/expense/{id}")
+	public ResponseEntity<?> updateTransactionExpense(@PathVariable("id") int id, @RequestBody TransactionTypeReq req) {
 		SingleRes rsp = new SingleRes();
 
-		newTransactionType.setId(id);
-		TransactionType result = ser.update(newTransactionType);
+		int idParent = req.getIdParent();
+		String name = req.getName();
+		String note = req.getNote();
+		String owner = req.getOwner();
+		TransactionExpense newTransactionExpense = new TransactionExpense();
+		newTransactionExpense.setId(id);
+		newTransactionExpense.setIdParent(idParent);
+		newTransactionExpense.setName(name);
+		newTransactionExpense.setNote(note);
+		newTransactionExpense.setOwner(owner);
+		TransactionExpense result = serExpense.update(newTransactionExpense);
 		if (result != null) {
 			rsp.setCallStatus("Fail");
 			rsp.setMessage("Transaction Type doesn't exists.");
@@ -80,13 +90,80 @@ public class TransactionTypeController {
 		return new ResponseEntity<>(rsp, HttpStatus.OK);
 	}
 
-	@PostMapping("/")
-	public ResponseEntity<?> getTransactionType(@RequestBody TransactionTypeReq req) {
+	@PostMapping("/expense/")
+	public ResponseEntity<?> getTransactionExpense(@RequestBody TransactionTypeReq req) {
 		SingleRes rsp = new SingleRes();
 
 		String name = req.getName() == null || req.getName().isEmpty() ? "" : req.getName();
 		String owner = req.getOwner() == null || req.getOwner().isEmpty() ? "" : req.getOwner();
-		List<TransactionType> lst = ser.findTransactionTypeLikeName(owner, name);
+		List<TransactionExpense> lst = serExpense.findTransactionExpenseLikeName(owner, name);
+		rsp.setResult(lst);
+
+		return new ResponseEntity<>(rsp, HttpStatus.OK);
+	}
+
+	@PostMapping("/income/create")
+	public ResponseEntity<?> createTransactionIncome(@RequestBody TransactionTypeReq req) {
+		SingleRes rsp = new SingleRes();
+
+		int idParent = req.getIdParent();
+		String name = req.getName();
+		String note = req.getNote();
+		String owner = req.getOwner();
+		TransactionIncome transactionIncome = new TransactionIncome();
+		transactionIncome.setIdParent(idParent);
+		transactionIncome.setName(name);
+		transactionIncome.setNote(note);
+		transactionIncome.setOwner(owner);
+
+		serIncome.save(transactionIncome);
+
+		return new ResponseEntity<>(rsp, HttpStatus.OK);
+	}
+
+	@DeleteMapping("/income/{id}")
+	public ResponseEntity<?> deleteTransactionIncome(@PathVariable("id") int id) {
+		SingleRes rsp = new SingleRes();
+
+		TransactionIncome result = serIncome.delete(id);
+		if (result != null) {
+			rsp.setCallStatus("Fail");
+			rsp.setMessage("Transaction Type doesn't exists.");
+		}
+
+		return new ResponseEntity<>(rsp, HttpStatus.OK);
+	}
+
+	@PutMapping("/income/{id}")
+	public ResponseEntity<?> updateTransactionIncome(@PathVariable("id") int id, @RequestBody TransactionTypeReq req) {
+		SingleRes rsp = new SingleRes();
+
+		int idParent = req.getIdParent();
+		String name = req.getName();
+		String note = req.getNote();
+		String owner = req.getOwner();
+		TransactionIncome newTransactionIncome = new TransactionIncome();
+		newTransactionIncome.setId(id);
+		newTransactionIncome.setIdParent(idParent);
+		newTransactionIncome.setName(name);
+		newTransactionIncome.setNote(note);
+		newTransactionIncome.setOwner(owner);
+		TransactionIncome result = serIncome.update(newTransactionIncome);
+		if (result != null) {
+			rsp.setCallStatus("Fail");
+			rsp.setMessage("Transaction Type doesn't exists.");
+		}
+
+		return new ResponseEntity<>(rsp, HttpStatus.OK);
+	}
+
+	@PostMapping("/income/")
+	public ResponseEntity<?> getTransactionIncome(@RequestBody TransactionTypeReq req) {
+		SingleRes rsp = new SingleRes();
+
+		String name = req.getName() == null || req.getName().isEmpty() ? "" : req.getName();
+		String owner = req.getOwner() == null || req.getOwner().isEmpty() ? "" : req.getOwner();
+		List<TransactionIncome> lst = serIncome.findTransactionIncomeLikeName(owner, name);
 		rsp.setResult(lst);
 
 		return new ResponseEntity<>(rsp, HttpStatus.OK);
