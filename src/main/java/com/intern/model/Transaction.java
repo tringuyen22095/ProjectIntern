@@ -1,6 +1,5 @@
 package com.intern.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "transaction", schema = "public")
-public class Transaction implements Serializable {
+public class Transaction {
 
 	// region -- Fields --
 
@@ -40,7 +39,11 @@ public class Transaction implements Serializable {
 	}
 
 	public void setStatus(String status) {
-		this.status = status;
+		if (status == null || status.isEmpty()) {
+			this.status = "active";
+		} else {
+			this.status = status;
+		}
 	}
 
 	public String getAccountType() {

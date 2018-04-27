@@ -1,5 +1,9 @@
 package com.intern.service;
 
+import java.util.List;
+
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import com.intern.model.UserAccount;
 
 public interface UserAccountService {
@@ -12,4 +16,6 @@ public interface UserAccountService {
 	UserAccount update(UserAccount newUserAccount);
 
 	UserAccount delete(String userName);
+
+	List<SimpleGrantedAuthority> getAuthorityByUserId();
 }

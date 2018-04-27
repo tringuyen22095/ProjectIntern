@@ -1,19 +1,26 @@
 package com.intern.service.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.intern.dao.UserAccountDao;
 import com.intern.model.UserAccount;
 import com.intern.service.UserAccountService;
+import com.intern.utl.Utils;
 
-@Service
+@Service(value = "userService")
 @Transactional
-public class UserAccountServiceImpl implements UserAccountService {
+public class UserAccountServiceImpl implements UserAccountService, UserDetailsService {
 
 	// region -- Fields --
 
@@ -67,6 +74,24 @@ public class UserAccountServiceImpl implements UserAccountService {
 			return userAccount;
 		}
 		return null;
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+		UserAccount user = findUserAccountByUserName(userName);
+
+		if (user == null) {
+			throw new UsernameNotFoundException("Invalid username or password.");
+		}
+
+		String hash = user.getPassword();
+
+		return new org.springframework.security.core.userdetails.User(userName, hash, getAuthorityByUserId());
+	}
+
+	@Override
+	public List<SimpleGrantedAuthority> getAuthorityByUserId() {
+		return Utils.getAuthorities(null);
 	}
 
 	// end

@@ -41,7 +41,7 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public Account update(Account newAccount) {
-		Account account = dao.getAccountById(newAccount.getAccountIdentity().getId());
+		Account account = dao.getAccountById(newAccount.getId());
 		if (account != null) {
 			account = entityManager.merge(newAccount);
 			return account;
@@ -60,5 +60,11 @@ public class AccountServiceImpl implements AccountService {
 		return null;
 	}
 
+	@Override
+	public Account findAccountById(int id) {
+		return dao.getAccountById(id);
+	}
+
 	// end
+	
 }

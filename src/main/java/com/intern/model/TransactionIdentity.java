@@ -11,6 +11,7 @@ public class TransactionIdentity implements Serializable {
 
 	// region -- Fields --
 
+	private static final long serialVersionUID = 1L;
 	@Column(name = "date_transaction", insertable = false, updatable = false, nullable = false)
 	private Date dateTransaction;
 	@Column(name = "owner", updatable = false, nullable = false)

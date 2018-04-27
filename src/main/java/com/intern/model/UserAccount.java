@@ -1,7 +1,5 @@
 package com.intern.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user_account", schema = "public")
-public class UserAccount implements Serializable {
+public class UserAccount {
 
 	// region -- Fields --
 

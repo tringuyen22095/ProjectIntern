@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.intern.model.Transaction;
 import com.intern.model.TransactionIdentity;
-import com.intern.req.SearchTransactionReq;
+import com.intern.req.SearchReq;
 import com.intern.req.TransactionReq;
 import com.intern.rsp.SingleRes;
 import com.intern.service.TransactionService;
@@ -34,7 +34,7 @@ public class TransactionController {
 	// region -- Methods --
 
 	@PostMapping("/")
-	public ResponseEntity<?> searchTransaction(@RequestBody SearchTransactionReq req) {
+	public ResponseEntity<?> searchTransaction(@RequestBody SearchReq req) {
 		SingleRes rsp = new SingleRes();
 
 		try {

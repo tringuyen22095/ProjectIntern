@@ -2,7 +2,7 @@ package com.intern.req;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class SearchTransactionReq {
+public class SearchReq {
 
 	// region -- Fields --
 
@@ -35,7 +35,7 @@ public class SearchTransactionReq {
 
 	// region -- Methods --
 
-	public SearchTransactionReq() {
+	public SearchReq() {
 		super();
 	}
 

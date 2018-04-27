@@ -1,47 +1,59 @@
 package com.intern.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "account", schema = "public")
-public class Account implements Serializable {
+public class Account {
 
 	// region -- Fields --
 
-	@EmbeddedId
-	private AccountIdentity accountIdentity;
-	@Column(name = "account_type", insertable = false, updatable = false, nullable = false)
+	@Id
+	@Column(name = "id", insertable = false, updatable = false, nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	@Column(name = "owner", updatable = false, nullable = false)
+	private String owner;
+	@Column(name = "account_type", nullable = true)
 	private String accountType;
-	@Column(name = "name", insertable = false, updatable = false, nullable = false)
+	@Column(name = "name", nullable = true)
 	private String name;
-	@Column(name = "ini", insertable = false, updatable = false, nullable = false)
+	@Column(name = "ini", updatable = false, nullable = true)
 	private double ini;
-	@Column(name = "rmn", insertable = false, updatable = false, nullable = false)
+	@Column(name = "rmn", nullable = true)
 	private double rmn;
-	@Column(name = "note", insertable = false, updatable = false, nullable = false)
+	@Column(name = "note", nullable = true)
 	private String note;
-	@Column(name = "status", insertable = false, updatable = false, nullable = false)
+	@Column(name = "status", insertable = false, nullable = false)
 	private String status;
 
 	// end
 
 	// region -- Get set --
 
-	public AccountIdentity getAccountIdentity() {
-		return accountIdentity;
-	}
-
-	public void setAccountIdentity(AccountIdentity accountIdentity) {
-		this.accountIdentity = accountIdentity;
-	}
-
 	public String getName() {
 		return name;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
 	}
 
 	public void setName(String name) {
@@ -84,28 +96,22 @@ public class Account implements Serializable {
 		this.accountType = accountType;
 	}
 
+	public void setStatus(String status) {
+		if (status == null || status.isEmpty()) {
+			this.status = "active";
+		} else {
+			this.status = status;
+		}
+	}
+
 	// end
 
 	// region -- Methods --
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public Account(AccountIdentity accountIdentity, String name, double ini, double rmn, String note, String status,
+	public Account(int id, String owner, String name, double ini, double rmn, String note, String status,
 			String accountType) {
-		this.accountIdentity = accountIdentity;
-		this.name = name;
-		this.accountType = accountType;
-		this.ini = ini;
-		this.rmn = rmn;
-		this.note = note;
-		this.status = status;
-	}
-
-	public Account(String owner, int id, String name, double ini, double rmn, String note, String status,
-			String account_type) {
-		this.accountIdentity = new AccountIdentity(owner, id);
+		this.owner = owner;
+		this.id = id;
 		this.name = name;
 		this.accountType = accountType;
 		this.ini = ini;
