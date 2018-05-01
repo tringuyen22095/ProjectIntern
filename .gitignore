@@ -10,7 +10,7 @@
 .springBeans
 .sts4-cache
 temp
-bin
+/bin
 
 ### IntelliJ IDEA ###
 .idea

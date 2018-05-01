@@ -1,0 +1,48 @@
+{
+    "authorities": [{
+        "authority": "ROLE_USER"
+    }],
+    "details": {
+        "remoteAddress": "0:0:0:0:0:0:0:1",
+        "sessionId": "624AEF4495EA7F410B0EDA4C39ACF75C",
+        "tokenValue": "ya29.GlutBU90d9qawvvultTsiybflaa54PlS5RIRFkOWTMl90CWSBp2ANKmL8b-2f9FGXWULZ3Tf8OuH0-AWl2nPN-CXjeRgkD8bh7z9C73yFbj5r0hqFZqK5NJASUP1",
+        "tokenType": "Bearer",
+        "decodedDetails": null
+    },
+    "authenticated": true,
+    "userAuthentication": {
+        "authorities": [{ "authority": "ROLE_USER" }],
+        "details": {
+            "sub": "102578512270890627971",
+            "name": "crew john",
+            "given_name": "crew",
+            "family_name": "john",
+            "picture": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
+            "email": "1311517345c@gmail.com",
+            "email_verified": true,
+            "locale": "vi"
+        },
+        "authenticated": true,
+        "principal": "crew john",
+        "credentials": "N/A",
+        "name": "crew john"
+    },
+    "oauth2Request": {
+        "clientId": "12894100090-tqso3lih5o42isneort886la2pesafmp.apps.googleusercontent.com",
+        "scope": [],
+        "requestParameters": {},
+        "resourceIds": [],
+        "authorities": [],
+        "approved": true,
+        "refresh": false,
+        "redirectUri": null,
+        "responseTypes": [],
+        "extensions": {},
+        "refreshTokenRequest": null,
+        "grantType": null
+    },
+    "credentials": "",
+    "clientOnly": false,
+    "principal": "crew john",
+    "name": "crew john"
+}

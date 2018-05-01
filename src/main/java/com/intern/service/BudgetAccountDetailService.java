@@ -1,13 +1,11 @@
 package com.intern.service;
 
+import java.util.List;
+
 import com.intern.model.*;
 
 public interface BudgetAccountDetailService {
 	String save(BudgetAccountDetail newBudgetAccountDetail);
 
-	BudgetAccountDetail update(BudgetAccountDetail newBudgetAccountDetail);
-
-	BudgetAccountDetail delete(int id);
-
-	BudgetAccountDetail findBudgetAccountDetailById(int id);
+	List<BudgetAccountDetail> findBudgetAccountDetailById(int id);
 }

@@ -109,31 +109,35 @@ CREATE TABLE PUBLIC."budget_acc_detail"
 
 /* Data */
 
+/*
 INSERT INTO PUBLIC."user_account" ("user_name", "password", "full_name", "email", "telephone") VALUES
 ('111','111','111','111@111.111','111'),
 ('222','222','222','222@222.222','222');
+*/
 
 INSERT INTO PUBLIC."account_type"("name") VALUES
 ('Cash'), ('Bank account'), ('ATM'), ('Deposit account'), ('Save account'), ('Other');
 
+/*
 INSERT INTO PUBLIC."account" ("owner", "account_type", "name", "ini", "rmn", "note") VALUES
 ('111', 'ACC1', 'Wallet', 500000, 500000, 'Current money in wallet'),
 ('111', 'ACC2', 'Bank account', 3250000, 3250000, 'Total money in bank account'),
 ('111', 'ACC3', 'Deposit account', 0, 0, '');
+*/
 
 INSERT INTO PUBLIC."transaction_expense" ("name", "note", "id_parent", "owner") VALUES
-('Lend', '', NULL, NULL),
-('Repayment', '', NULL, NULL),
-('Food and Dining', '', NULL, NULL),
-('Utilities', '', NULL, NULL),
-('Auto & Transport', '', NULL, NULL),
-('Kids', '', NULL, NULL),
-('Clothing', '', NULL, NULL),
-('Gift & Donations', '', NULL, NULL),
-('Health & Fitness', '', NULL, NULL),
-('Home', '', NULL, NULL),
-('Entertainment', '', NULL, NULL),
-('Personal', '', NULL, NULL),
+('Lend', '', 0, NULL),
+('Repayment', '', 0, NULL),
+('Food and Dining', '', 0, NULL),
+('Utilities', '', 0, NULL),
+('Auto & Transport', '', 0, NULL),
+('Kids', '', 0, NULL),
+('Clothing', '', 0, NULL),
+('Gift & Donations', '', 0, NULL),
+('Health & Fitness', '', 0, NULL),
+('Home', '', 0, NULL),
+('Entertainment', '', 0, NULL),
+('Personal', '', 0, NULL),
 ('Groceries', '', 3, NULL),
 ('Restaurant', '', 3, NULL),
 ('Bars & Coffee', '', 3, NULL),
@@ -178,11 +182,11 @@ INSERT INTO PUBLIC."transaction_expense" ("name", "note", "id_parent", "owner") 
 ('Hobbies', '', 12, NULL);
 
 INSERT INTO PUBLIC."transaction_income" ("name", "note", "id_parent", "owner") VALUES
-('Borrow', '', NULL, NULL),
-('Collecting debts', '', NULL, NULL),
-('Salary', '', NULL, NULL),
-('Bonus', '', NULL, NULL),
-('Awarded', '', NULL, NULL),
-('Interest', '', NULL, NULL),
-('Other', '', NULL, NULL),
-('Savings interest', '', NULL, NULL);
+('Borrow', '', 0, NULL),
+('Collecting debts', '', 0, NULL),
+('Salary', '', 0, NULL),
+('Bonus', '', 0, NULL),
+('Awarded', '', 0, NULL),
+('Interest', '', 0, NULL),
+('Other', '', 0, NULL),
+('Savings interest', '', 0, NULL);

@@ -1,13 +1,11 @@
 package com.intern.service;
 
+import java.util.List;
+
 import com.intern.model.BudgetTransactionDetail;
 
 public interface BudgetTransactionDetailService {
 	String save(BudgetTransactionDetail newBudgetTransactionDetail);
 
-	BudgetTransactionDetail update(BudgetTransactionDetail newBudgetTransactionDetail);
-
-	BudgetTransactionDetail delete(int id);
-
-	BudgetTransactionDetail findBudgetTransactionDetailById(int id);
+	List<BudgetTransactionDetail> findBudgetTransactionDetailById(int id);
 }
